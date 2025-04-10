@@ -14,6 +14,7 @@ import uk.gov.hmcts.reform.dev.models.CaseDB;
 
 
 
+
 @RestController
 public class CaseController {
 
@@ -33,9 +34,23 @@ public class CaseController {
         return ok("Product Created");
     }
 
-    @GetMapping("/LastCase")
+    @GetMapping("/LastCase") //Change to task by ID
     public ResponseEntity<Object> getCaseAdded() {
         return ok(cases.getLastEle());
     }
+
+    @GetMapping("/deleteCase") //Implement these 
+    public ResponseEntity<Object> deleteCase(){
+        return ok("case deleted");
+    }
     
+    @GetMapping("/allCases")
+    public ResponseEntity<Object> getAllCases() {
+        return ok("All Cases");
+    }
+
+    @GetMapping("/updateTask")
+    public ResponseEntity<Object> updateTask(){
+        return ok("updated");
+    }    
 }
