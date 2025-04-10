@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<hmcts-dev-test-backend>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "uk.gov.hmcts.reform.dev.Application",
+            "projectName": "hmcts-dev-test-backend",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
