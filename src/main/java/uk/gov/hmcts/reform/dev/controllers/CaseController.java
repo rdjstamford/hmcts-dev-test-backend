@@ -20,17 +20,11 @@ public class CaseController {
 
     @Autowired
     CaseDB cases;
-
-    @GetMapping(value = "/get-example-case", produces = "application/json")
-    public ResponseEntity<Case> getCase() {
-        return ok(new Case(1, "ABC12345", "Case Title",
-                                  "Case Description", "Case Status", LocalDateTime.now()
-        ));
-    }  
     
     @GetMapping("/createProduct/{caseNumber}/{title}/{desc}/{status}")
     public ResponseEntity<Object> createCase(@PathVariable String caseNumber, @PathVariable String title, @PathVariable String desc, @PathVariable String status){
-        cases.addCases(new Case(1, caseNumber, title ,desc, status, LocalDateTime.now()));
+        int id = cases.getId();
+        cases.addCases(new Case(id, caseNumber, title ,desc, status, LocalDateTime.now()));
         return ok("Product Created");
     }
 
@@ -41,12 +35,19 @@ public class CaseController {
 
     @GetMapping("/deleteCase") //Implement these 
     public ResponseEntity<Object> deleteCase(){
+        cases.delCase();
         return ok("case deleted");
+    }
+    
+    @GetMapping("/deleteCase/{id}")
+    public ResponseEntity<Object> deleteId(@PathVariable int id){
+        cases.delCase(id);
+        return ok("Case Deleted");
     }
     
     @GetMapping("/allCases")
     public ResponseEntity<Object> getAllCases() {
-        return ok("All Cases");
+        return ok(cases.entries());
     }
 
     @GetMapping("/updateTask")
