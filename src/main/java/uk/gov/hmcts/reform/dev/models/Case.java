@@ -18,5 +18,6 @@ public class Case {
     private String title;
     private String description;
     private String status;
+    private String dueDate;
     private LocalDateTime createdDate;
 }

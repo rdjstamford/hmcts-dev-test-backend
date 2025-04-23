@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class CaseDB {
 
+    //TODO: Change to postgres db
+    //No persistent storage with arraylist
+    //as want to use sql db
     private static ArrayList<Case> cases;
 
     private int id = 0;
@@ -38,6 +41,9 @@ public class CaseDB {
 
      public ArrayList<Case> entries(){
           return cases;
+     }
+     public void update(int id, String updateStr){
+         cases.get(id-1).setStatus(updateStr);
      }
 }
 
