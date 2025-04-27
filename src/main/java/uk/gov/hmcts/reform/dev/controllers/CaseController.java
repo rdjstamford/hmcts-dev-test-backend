@@ -21,8 +21,8 @@ public class CaseController {
     @Autowired
     CaseDB cases;
     
-    @GetMapping("/createProduct/{caseNumber}/{title}/{desc}/{status}/{dueDate}")
-    public ResponseEntity<Object> createCase(@PathVariable String caseNumber, @PathVariable String title, @PathVariable String desc, @PathVariable String status, @PathVariable String dueDate){
+    @GetMapping("/createCase/{caseNumber}/{title}/{desc}/{status}/{dueDate}")
+    public ResponseEntity<Object> createCase(@PathVariable("caseNumber") String caseNumber, @PathVariable("title") String title, @PathVariable("desc") String desc, @PathVariable("status") String status, @PathVariable("dueDate") String dueDate){
         int id = cases.getId();
         cases.addCases(new Case(id, caseNumber, title ,desc, status, dueDate, LocalDateTime.now()));
         return ok("Product Created");
@@ -50,7 +50,7 @@ public class CaseController {
         return ok(cases.entries());
     }
 
-    @GetMapping("/updateTask/{id}/{updateStr}")
+    @GetMapping("/updateCase/{id}/{updateStr}")
     public ResponseEntity<Object> updateTask(@PathVariable int id, @PathVariable String updateStr){
         cases.update(id, updateStr);
         return ok("updated");
